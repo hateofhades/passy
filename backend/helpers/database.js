@@ -44,7 +44,14 @@ function userExists(username) {
 
 function login(username, password) {
     const sql = db.prepare('SELECT * FROM accounts WHERE username = ?');
-    const hash = sql.get(username).password;
+
+    let hash;
+    
+    try {
+        hash = sql.get(username).password;
+    } catch {
+        return false;
+    }
 
 
     return bcrypt.compareSync(password, hash);

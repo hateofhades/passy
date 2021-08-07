@@ -16,8 +16,10 @@ router.post('/register', (req, res) => {
                             if(!database.userExists(username)) {
                                 let registered = database.registerAccount(password, username, email);
 
-                                if(registered)
+                                if(registered) {
+                                    helper.createUser(username, password);
                                     res.status(200).json({ 'message': `Account '${username}' has been registered. Please log in now.` });
+                                }
                                 else res.status(500).json({ 'error': 'Something went wrong. Try again.' });
 
                             } else res.status(400).json({ 'error': 'User is already registered. Please try another username.' });
@@ -35,6 +37,7 @@ router.post('/login', (req, res) => {
         if(database.login(username, password)) {
             req.session.regenerate(function() {
                 req.session.username = username;
+                req.session.encryptionKey = password;
                 
                 res.status(200).json({ 'message': 'You have been logged in.' });
             });

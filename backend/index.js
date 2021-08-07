@@ -1,8 +1,13 @@
 const express = require('express');
 const sessions = require('express-session');
 const cookieParser = require("cookie-parser");
+const fs = require('fs');
+const path = require('path');
 
-const database = require('./helpers/database.js');
+if(!fs.existsSync(path.join(__dirname, '/data'))) fs.mkdirSync(path.join(__dirname, 'data/accounts-data'), {recursive: true});
+else if(!fs.existsSync(path.join(__dirname, '/data/accounts-data'))) fs.mkdirSync(path.join(__dirname, 'data/accounts-data'));
+
+require('./helpers/database.js');
 
 const app = express();
 const PORT = 8080;
