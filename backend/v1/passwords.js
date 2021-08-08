@@ -26,4 +26,13 @@ router.post('/add', (req, res) => {
     } else res.status(401).json({ 'error': 'Not logged in.' });
 });
 
+router.post('/generate', (req, res) => {
+    let { length, upperChar, lowerChar, numericChar, specialChar } = req.body; 
+
+    if(!helper.isAnyUndefined(length, upperChar, lowerChar, numericChar, specialChar)) {
+        const password = helper.generatePassword(length, upperChar, lowerChar, numericChar, specialChar);
+        res.status(200).json({ 'password': password });
+    } else res.status(400).json({ 'error': 'Missing parameters.' });
+});
+
 module.exports = router;

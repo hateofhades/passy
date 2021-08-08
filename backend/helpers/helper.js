@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto-js');
+const gen = require('crypto');
 
 function isAnyUndefined() {
     for(i in arguments) {
@@ -62,6 +63,21 @@ function getPasswords(username, encryptionKey) {
     }
 }
 
+function generatePassword(length, upperChar, lowerChar, numericChar, specialChar) {
+    const upperCharSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowerCharSet = "abcdefghijklmnopqrstuvwxyz";
+    const numericCharSet = "0123456789";
+    const specialCharSet = "!@#$%^&*";
+    
+    let wishlist = "";
+    if(upperChar) wishlist += upperCharSet;
+    if(lowerChar) wishlist += lowerCharSet;
+    if(numericChar) wishlist += numericCharSet;
+    if(specialChar) wishlist += specialCharSet;
+
+    return Array.from(gen.randomFillSync(new Uint8Array(length), 0, length)).map((x) => wishlist[x % wishlist.length]).join('');       
+}
+
 module.exports = {
     isAnyUndefined: isAnyUndefined,
     isValidEmail: isValidEmail,
@@ -69,5 +85,6 @@ module.exports = {
     isValidUsername: isValidUsername,
     createUser: createUser,
     addPassword: addPassword,
-    getPasswords: getPasswords
+    getPasswords: getPasswords,
+    generatePassword: generatePassword
 };
