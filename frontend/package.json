@@ -3,13 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@material-ui/core": "^4.12.3",
+=======
+>>>>>>> 95727ab44cc21de72352485291d87a55a408054a
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "node-sass": "4.14.1",
     "react": "^17.0.2",
+<<<<<<< HEAD
     "react-animated-css": "^1.2.1",
+=======
+>>>>>>> 95727ab44cc21de72352485291d87a55a408054a
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"

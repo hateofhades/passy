@@ -16,7 +16,8 @@
         align-items: center;
 
         .image {
-            width: 9em;  
+            width: 9em;
+
             img {
                 width: 100%;
                 height: 100%;
@@ -51,7 +52,7 @@
                     border: 0;
                     margin-bottom: 31px;
                     transition: all 250ms ease-in-out;
-                
+
                     &:focus {
                         outline: none;
                         box-shadow: 0px 0px 12px 0.8px #0e81ce96;
@@ -60,6 +61,7 @@
             }
         }
     }
+
     .footer {
         display: flex;
         flex-direction: column;
@@ -80,9 +82,11 @@
     border-radius: 3px;
     transition: all 250ms ease-in-out;
     cursor: pointer;
+
     &:hover {
         background-color: #2386c8;
     }
+
     &:focus {
         outline: none;
     }
@@ -94,6 +98,7 @@
     justify-content: center;
     align-items: center;
     font-family: "Open Sans", sans-serif;
+
     .contained {
         display: flex;
         width: 27em;
@@ -104,6 +109,7 @@
         margin-top: 5px;
         position: relative;
         z-index: 99;
+
         .container {
             top: 2em;
 
@@ -120,6 +126,7 @@
             z-index: 99;
             padding: 17px 10px;
         }
+
         .switcher {
             top: 2em;
 
@@ -137,28 +144,32 @@
             transition: all 400ms ease-in-out;
             cursor: pointer;
             box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.281);
-        
+
             &.right {
-              right: -40%;
-              align-items: flex-end;
-              &:hover {
-                right: -45%;
-              }
+                right: -40%;
+                align-items: flex-end;
+
+                &:hover {
+                    right: -45%;
+                }
             }
+
             &.left {
-              right: 40%;
-              align-items: flex-start;
-              &:hover {
-                right: 45%;
-              }
+                right: 40%;
+                align-items: flex-start;
+
+                &:hover {
+                    right: 45%;
+                }
             }
+
             .text {
                 font-size: 21px;
                 font-weight: 500;
                 color: #fff;
                 margin-right: 3em;
                 margin-left: 3em;
-              }
+            }
         }
     }
 }
