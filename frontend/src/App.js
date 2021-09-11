@@ -1,9 +1,10 @@
-import LoginPage from './LoginPage';
+import './App.scss';
+import AuthPage from './Components/AuthPage/AuthPage';
 
 function App() {
   return (
     <div className="App">
-      <LoginPage />
+      <AuthPage />
     </div>
   );
 }
