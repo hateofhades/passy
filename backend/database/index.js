@@ -1,5 +1,7 @@
 const Database = require('better-sqlite3');
+const bcrypt = require('bcrypt');
 const db = new Database('./database/database.db');
+const saltRounds = 10;
 
 function createTables() {
     //Create the accounts table if it doesnt exist.
@@ -17,6 +19,23 @@ const database = {
     load() {
         console.log("Loading database...");
         createTables();
+    },
+
+    registerAccount(username, email, password) {
+        const salt = bcrypt.genSaltSync(saltRounds);
+        const hash = bcrypt.hashSync(password, salt);
+
+        const sql = db.prepare('INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)');
+
+        let info;
+
+        try {
+            info = sql.run(username, hash, email);
+        } catch (error) {
+            info = { 'changes': 0 };
+        }
+
+        return info.changes == 1;
     }
 };
 
