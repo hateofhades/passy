@@ -2,13 +2,13 @@ import React from 'react'
 import Header from '../AlwaysVisible/Header';
 import Floater from '../AlwaysVisible/Floater';
 
-function AddPage() {
+function SharePage() {
     return (
         <div className="mainBody">
-            <Header currentPage="add" />
-            <Floater />
+            <Header />
+            <Floater selectedFloater="share" />
         </div>
     )
 }
 
-export default AddPage
+export default SharePage

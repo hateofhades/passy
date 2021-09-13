@@ -4,6 +4,10 @@ import MainPage from './Components/MainPage/MainPage';
 import Logout from './Components/Logout';
 import CategoriesPage from './Components/CategoriesPage/CategoriesPage';
 import AddPage from './Components/AddPage/AddPage';
+import SyncPage from './Components/SyncPage/SyncPage';
+import SharePage from './Components/SharePage/SharePage';
+import GeneratorPage from './Components/GeneratorPage/GeneratorPage';
+import SettingsPage from './Components/SettingsPage/SettingsPage';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -21,6 +25,10 @@ function App() {
         {user.username !== "" && <Route exact path="/" component={MainPage} />}
         <Route path="/categories" component={CategoriesPage} />
         <Route path="/add" component={AddPage} />
+        <Route path="/sync" component={SyncPage} />
+        <Route path="/share" component={SharePage} />
+        <Route path="/generator" component={GeneratorPage} />
+        <Route path="/settings" component={SettingsPage} />
       </Switch>
     </Router>
   );

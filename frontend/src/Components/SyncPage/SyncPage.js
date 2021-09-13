@@ -2,13 +2,13 @@ import React from 'react'
 import Header from '../AlwaysVisible/Header';
 import Floater from '../AlwaysVisible/Floater';
 
-function AddPage() {
+function SyncPage() {
     return (
         <div className="mainBody">
-            <Header currentPage="add" />
-            <Floater />
+            <Header />
+            <Floater selectedFloater="sync" />
         </div>
     )
 }
 
-export default AddPage
+export default SyncPage

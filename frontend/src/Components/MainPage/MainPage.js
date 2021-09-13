@@ -1,7 +1,7 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
-import Header from '../Header/Header';
-import Floater from '../Header/Floater';
+import Header from '../AlwaysVisible/Header';
+import Floater from '../AlwaysVisible/Floater';
 import MainContent from './MainContent';
 
 function MainPage() {

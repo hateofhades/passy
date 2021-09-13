@@ -29,4 +29,12 @@
             filter: invert(50%) sepia(96%) saturate(512%) hue-rotate(171deg) brightness(90%) contrast(89%);
         }
     }
+
+    .floater-selected {
+        filter: invert(50%) sepia(96%) saturate(512%) hue-rotate(171deg) brightness(90%) contrast(89%);
+
+        &:hover {
+            cursor: default;
+        }
+    }
 }

@@ -18,8 +18,8 @@ function Header({ currentPage }) {
             <div onClick={e => history.push("/categories")} className={`header-selector ${currentPage === "categories" ? "selected" : ""}`}>
                 <p>Categories</p>
             </div>
-            <div onClick={e => history.push("/add")} className="add-item">
-                <img src={plusImg} alt="" />
+            <div onClick={e => history.push("/add")} className={`add-item ${currentPage === "add" ? "selected" : ""}`}>
+                <img className={`${currentPage === "add" ? "selected" : ""}`} src={plusImg} alt="" />
             </div>
         </div>
     );

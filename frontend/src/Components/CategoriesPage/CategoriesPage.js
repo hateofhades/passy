@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../Header/Header';
-import Floater from '../Header/Floater';
+import Header from '../AlwaysVisible/Header';
+import Floater from '../AlwaysVisible/Floater';
 
 function CategoriesPage() {
     return (

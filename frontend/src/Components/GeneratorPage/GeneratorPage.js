@@ -2,13 +2,13 @@ import React from 'react'
 import Header from '../AlwaysVisible/Header';
 import Floater from '../AlwaysVisible/Floater';
 
-function AddPage() {
+function GeneratorPage() {
     return (
         <div className="mainBody">
-            <Header currentPage="add" />
-            <Floater />
+            <Header />
+            <Floater selectedFloater="generator" />
         </div>
     )
 }
 
-export default AddPage
+export default GeneratorPage
