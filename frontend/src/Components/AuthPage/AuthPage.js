@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
 import Login from './Login';
 import Register from './Register';
 import './style.scss';
@@ -40,6 +41,7 @@ function AuthPage() {
                 </div>
                 <Switcher current={isLogginActive ? "Register" : "Login"} onClick={changeState} />
             </div>
+            <ToastContainer />
         </div>
     )
 }

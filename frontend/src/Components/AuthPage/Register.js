@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logoImg from './logo.svg';
+import logoImg from '../../logo.svg';
 import axios from 'axios';
 import './style.scss'
 import { toast } from 'react-toastify';
@@ -97,7 +97,7 @@ function Register({ handle }) {
                     </div>
                 </div>
             </div>
-            <div className="footer">
+            <div className="footer--auth">
                 <button onClick={handleRegister} type="button" className="auth-btn animate__animated animate__fadeIn">Register</button>
             </div>
         </div>
