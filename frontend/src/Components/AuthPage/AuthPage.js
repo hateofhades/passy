@@ -6,6 +6,7 @@ import './style.scss';
 function AuthPage() {
     const [isLogginActive, setLoggin] = useState(true);
     const [mounted, setMounted] = useState(0);
+    const [username, setUsername] = useState("");
 
     const Switcher = props => {
         return <div className={`switcher ${isLogginActive ? "right" : "left"} animate__animated ${mounted > 1 ? !isLogginActive ? "animate__slideInRight" : "animate__slideInLeft" : ""}`} onClick={props.onClick}>
@@ -23,12 +24,17 @@ function AuthPage() {
         setMounted(m => m + 1);
     }, [isLogginActive]);
 
+    const switchToLogin = registeredUsername => {
+        setUsername(registeredUsername);
+        setLoggin(true);
+    };
+
     return (
         <div className="authPage">
             <div className="contained">
                 <div className="container">
-                    {isLogginActive && <Login playAnimation={mounted > 1} />}
-                    {!isLogginActive && <Register />}
+                    {isLogginActive && <Login playAnimation={mounted > 1} registeredUsername={username} />}
+                    {!isLogginActive && <Register handle={switchToLogin} />}
                 </div>
                 <Switcher current={isLogginActive ? "Register" : "Login"} onClick={changeState} />
             </div>

@@ -10,7 +10,7 @@ const errorToast = {
     draggable: false
 }
 
-function Register() {
+function Register({ handle }) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -29,9 +29,10 @@ function Register() {
                 email: email,
                 password: password
             });
-            if (!response.data.code)
+            if (!response.data.code) {
                 toast("Account registered! Please login.", errorToast);
-            else if (response.data.code === 2)
+                handle(username);
+            } else if (response.data.code === 2)
                 toast.error("Username is already taken!", errorToast);
             else
                 toast.error("Server encountered an error. Please try again.", errorToast);
@@ -51,7 +52,7 @@ function Register() {
     const validateRegister = () => {
         let validate = { ok: 1 };
 
-        if (!username.match(/^[a-z0-9_-]/)) {
+        if (!username.match(/^[A-Za-z0-9_-]*$/)) {
             validate.ok = 0;
             validate.username = true;
             setValidateUsername(false);
@@ -76,7 +77,7 @@ function Register() {
     };
 
     return (
-        <div className="base-container">
+        <div className="auth-base-container">
             <div className="content">
                 <div className="image">
                     <img src={logoImg} alt="" />
@@ -97,7 +98,7 @@ function Register() {
                 </div>
             </div>
             <div className="footer">
-                <button onClick={handleRegister} type="button" className="btn animate__animated animate__fadeIn">Register</button>
+                <button onClick={handleRegister} type="button" className="auth-btn animate__animated animate__fadeIn">Register</button>
             </div>
         </div>
     );

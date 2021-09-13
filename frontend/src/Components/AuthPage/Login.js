@@ -13,10 +13,10 @@ const errorToast = {
     draggable: false
 }
 
-function Login({ playAnimation }) {
+function Login({ playAnimation, registeredUsername }) {
     const dispatch = useDispatch();
 
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState(registeredUsername);
     const [password, setPassword] = useState("");
     const [validateUsername, setValidateUsername] = useState(true);
     const [validatePassword, setValidatePassword] = useState(true);
@@ -49,7 +49,7 @@ function Login({ playAnimation }) {
     };
 
     return (
-        <div className="base-container">
+        <div className="auth-base-container">
             <div className="content">
                 <div className="image">
                     <img src={logoImg} alt="" />
@@ -66,7 +66,7 @@ function Login({ playAnimation }) {
                 </div>
             </div>
             <div className="footer">
-                <button onClick={handleLogin} type="button" className={`btn animate__animated ${playAnimation ? "animate__fadeIn" : ""}`}>Login</button>
+                <button onClick={handleLogin} type="button" className={`auth-btn animate__animated ${playAnimation ? "animate__fadeIn" : ""}`}>Login</button>
                 <Link className={`text animate__animated ${playAnimation ? "animate__fadeIn" : ""}`} color="inherit" href="#" variant="body2" onClick={e => e.preventDefault()}>Problems logging in?</Link>
             </div>
         </div >
