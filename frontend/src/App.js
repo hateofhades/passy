@@ -8,6 +8,7 @@ import SyncPage from './Components/SyncPage/SyncPage';
 import SharePage from './Components/SharePage/SharePage';
 import GeneratorPage from './Components/GeneratorPage/GeneratorPage';
 import SettingsPage from './Components/SettingsPage/SettingsPage';
+import EditPage from './Components/EditPage/EditPage';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -29,6 +30,7 @@ function App() {
         <Route path="/share" component={SharePage} />
         <Route path="/generator" component={GeneratorPage} />
         <Route path="/settings" component={SettingsPage} />
+        <Route path="/edit/:id" component={EditPage} />
       </Switch>
     </Router>
   );

@@ -1,8 +1,9 @@
 .floater-body {
-    position: absolute;
+    position: fixed;
     top: 50%;
 
     min-width: 80px;
+    max-width: 100px;
     min-height: 350px;
     width: 5%;
     height: 60%;
