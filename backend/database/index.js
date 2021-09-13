@@ -36,6 +36,19 @@ const database = {
         }
 
         return info.changes == 1;
+    },
+
+    loginAccount(username, password) {
+        const sql = db.prepare('SELECT * FROM accounts WHERE username = ?');
+        let hash;
+
+        try {
+            hash = sql.get(username).password;
+        } catch {
+            return false;
+        }
+
+        return bcrypt.compareSync(password, hash);
     }
 };
 

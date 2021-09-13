@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import logoImg from './logo.svg';
 import axios from 'axios';
 import './style.scss'
@@ -29,10 +29,9 @@ function Register() {
                 email: email,
                 password: password
             });
-            console.log(response.data);
             if (!response.data.code)
                 toast("Account registered! Please login.", errorToast);
-            else if (response.data.code == 2)
+            else if (response.data.code === 2)
                 toast.error("Username is already taken!", errorToast);
             else
                 toast.error("Server encountered an error. Please try again.", errorToast);
