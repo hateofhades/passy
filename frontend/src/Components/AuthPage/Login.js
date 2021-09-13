@@ -6,6 +6,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { login } from '../../features/user';
+import { useHistory } from 'react-router';
 
 const errorToast = {
     position: "bottom-right",
@@ -23,6 +24,8 @@ function Login({ playAnimation, registeredUsername }) {
 
     const [playAnimationState, setPlayAnimationState] = useState(playAnimation);
 
+    let history = useHistory();
+
     const handleLogin = async () => {
         setPlayAnimationState(false);
 
@@ -34,6 +37,7 @@ function Login({ playAnimation, registeredUsername }) {
 
             if (!response.data.code) {
                 dispatch(login({ username: username, encryptionKey: password }));
+                history.push('/');
             } else if (response.data.code === 1) toast.error("Username or password is incorrect.", errorToast);
             else toast.error("Username or password is undefined.", errorToast);
         } else {
