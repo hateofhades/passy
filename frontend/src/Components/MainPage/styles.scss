@@ -45,14 +45,13 @@
 
     .details {
         margin-left: 2px;
-        width: 20vw;
-        overflow-y: hidden;
-        overflow-x: visible;
+        width: 40vw;
+        overflow: hidden;
 
         .title {
             color: #3498DB;
             max-height: 50px;
-            font-size: 3.5vh;
+            font-size: 2.5vh;
             overflow: hidden;
         }
 
@@ -70,7 +69,7 @@
 
         .action {
             margin: 5px;
-            height: 7vh;
+            height: 5vw;
             max-height: 90px;
 
             transition: all 250ms ease-in-out;
