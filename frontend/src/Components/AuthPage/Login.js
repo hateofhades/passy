@@ -30,6 +30,8 @@ function Login({ playAnimation, registeredUsername }) {
         setPlayAnimationState(false);
 
         if (username !== "" && password !== "") {
+            axios.defaults.withCredentials = true;
+
             let response = await axios.post("http://localhost:6942/v1/auth/login", {
                 username: username,
                 password: password

@@ -1,24 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import Password from './Password';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+
 function MainContent() {
+    const [passwords, setPasswords] = useState([]);
     let history = useHistory();
+    const user = useSelector(state => state.user.value);
+
+    useEffect(() => {
+        async function fetchPasswords() {
+            axios.defaults.withCredentials = true;
+            let response = await axios.post("http://localhost:6942/v1/passwords/get", {
+                encryptionKey: user.encryptionKey
+            });
+
+            if (response.data.code === 0) {
+                setPasswords(response.data.passwords);
+            }
+            else history.push("/logout");
+        }
+        fetchPasswords();
+        // eslint-disable-next-line
+    }, []);
+
     return (
         <div className="mainContent animate__animated animate__fadeIn">
             <div className="scrollableContent">
-                <Password
-                    history={history}
-                    image="https://play-lh.googleusercontent.com/ccWDU4A7fX1R24v-vvT480ySh26AYp97g1VrIB_FIdjRcuQB2JP2WdY7h_wVVAeSpg"
-                    login={{
-                        id: "1",
-                        title: "Facebook",
-                        account: "nache.cuceritorul.de.femei@gmail.com",
-                        password: "...",
-                        website: "...",
-                        application: "..."
-                    }}
-                />
+                {passwords.map((passwordObject, index) => {
+                    return (
+                        <Password
+                            key={passwordObject.id}
+                            history={history}
+                            login={{
+                                id: passwordObject.id,
+                                title: passwordObject.title,
+                                account: passwordObject.account,
+                                password: passwordObject.password,
+                                website: passwordObject.website
+                            }}
+                        />
+                    )
+                })}
             </div>
         </div>
     );

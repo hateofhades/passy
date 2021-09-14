@@ -7,8 +7,10 @@ router.post('/register', (req, res) => {
     let { username, email, password } = req.body;
     if (!helper.isAnyUndefined(username, email, password)) {
         if (username.match(/^[a-z0-9_-]{6,28}$/) && email.match(/\S+@\S+\.\S+/) && password.match(/(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/)) {
-            if (db.registerAccount(username, email, password))
-                res.status(200).json({ code: 0, message: "Account registered! Please login." })
+            if (db.registerAccount(username, email, password)) {
+                helper.createUserData(username, password);
+                res.status(200).json({ code: 0, message: "Account registered! Please login." });
+            }
             else res.status(200).json({ code: 2, error: "Username is already taken! Please try agin." })
         }
         else res.status(200).json({ code: 1, error: "Could not register account!" });
@@ -21,6 +23,7 @@ router.post('/login', (req, res) => {
         if (db.loginAccount(username, password)) {
             req.session.regenerate(function () {
                 req.session.username = username;
+                req.session.save(() => { });
 
                 res.status(200).json({ code: 0, message: "You have been logged in!" });
             });
@@ -29,7 +32,7 @@ router.post('/login', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-    req.session.destroy();
+    req.session.destroy(() => { });
 
     res.status(200).json({ code: 0, message: "You have been logged out." });
 });

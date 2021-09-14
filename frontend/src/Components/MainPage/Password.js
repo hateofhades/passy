@@ -1,14 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './styles.scss';
 import userIcon from './user.svg';
 import passIcon from './key.svg';
 import editIcon from './edit.svg';
+import logoImg from '../../logo.svg';
 
-function Password({ image, login, history }) {
+function Password({ login, history }) {
+    const [image, setImage] = useState("");
+    const handleOpen = () => {
+        let link = login.website;
+
+        if (!(link.includes("https://") || link.includes("http://")))
+            link = "https://" + link;
+
+        window.open(link, '_blank').focus();
+    };
+
+    useEffect(() => {
+        async function fetchData() {
+            let url = login.website;
+            if (!url)
+                return setImage(logoImg);
+            else {
+                return setImage(`https://besticon-demo.herokuapp.com/icon?size=80..120..200&url=${url}`);
+            }
+        };
+
+        fetchData();
+        // eslint-disable-next-line
+    }, []);
+
     return (
         <div className="passwordBody">
-            <img src={image} alt="" className="icon" />
-            <div className="details">
+            <img onClick={e => handleOpen()} src={image} alt="" className={`icon ${login.website !== "" ? "pointer" : ""}`} />
+            <div onClick={e => handleOpen()} className={`details ${login.website !== "" ? "pointer" : ""}`}>
                 <div className="title">{login.title}</div>
                 <div className="login">{login.account}</div>
             </div>

@@ -11,6 +11,10 @@
         width: 100%;
 
         overflow: auto;
+
+        &:focus {
+            outline: none;
+        }
     }
 }
 
@@ -47,10 +51,13 @@
 
         .title {
             color: #3498DB;
-            font-size: 5vh;
+            max-height: 50px;
+            font-size: 3.5vh;
+            overflow: hidden;
         }
 
         .login {
+            height: 50%;
             font-size: 2vh;
             color: #CE2D4F;
         }
@@ -74,5 +81,11 @@
                 filter: invert(50%) sepia(96%) saturate(512%) hue-rotate(171deg) brightness(90%) contrast(89%);
             }
         }
+    }
+}
+
+.pointer {
+    &:hover {
+        cursor: pointer;
     }
 }

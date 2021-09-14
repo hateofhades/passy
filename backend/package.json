@@ -2,9 +2,13 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "better-sqlite3": "^7.4.3",
+    "better-sqlite3-session-store": "^0.0.2",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "fs-extra": "^10.0.0",
     "nodemon": "^2.0.12"
   },
   "scripts": {
@@ -14,5 +18,8 @@
   "version": "0.1.0",
   "main": "index.js",
   "author": "hateofhades",
-  "license": "GPL-3.0 License"
+  "license": "GPL-3.0 License",
+  "nodemonConfig": {
+    "ignore": ["database/database_data/*", "logins.json", "*/logins.json"]
+  }
 }
