@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './styles.scss';
 import userIcon from './user.svg';
 import passIcon from './key.svg';
@@ -16,13 +17,24 @@ function Password({ login, history }) {
         window.open(link, '_blank').focus();
     };
 
+    const compareSize = (a, b) => {
+        if(a.size > b.size)
+            return -1;
+        if(a.size < b.size)
+            return 1;
+        return 0;
+    }
+
     useEffect(() => {
         async function fetchData() {
             let url = login.website;
             if (!url)
                 return setImage(logoImg);
             else {
-                return setImage(`https://besticon-demo.herokuapp.com/icon?size=80..120..200&url=${url}`);
+                axios.defaults.withCredentials = false;
+                let response = await axios.get(`https://grab-favicons.herokuapp.com/api/v1/grab-favicons?url=${url}`);
+                let icons = response.data.sort(compareSize);
+                return setImage(icons[0].url);
             }
         };
 

@@ -15,6 +15,13 @@
         &:focus {
             outline: none;
         }
+
+        .loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -10vw 0 0 -5vh;
+        }
     }
 }
 

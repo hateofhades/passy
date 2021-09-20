@@ -29,21 +29,21 @@ function MainContent() {
     return (
         <div className="mainContent animate__animated animate__fadeIn">
             <div className="scrollableContent">
-                {passwords.map((passwordObject, index) => {
-                    return (
-                        <Password
-                            key={passwordObject.id}
-                            history={history}
-                            login={{
-                                id: passwordObject.id,
-                                title: passwordObject.title,
-                                account: passwordObject.account,
-                                password: passwordObject.password,
-                                website: passwordObject.website
-                            }}
-                        />
-                    )
-                })}
+                    {passwords.map((passwordObject, index) => {
+                        return (
+                            <Password
+                                key={passwordObject.id}
+                                history={history}
+                                login={{
+                                    id: passwordObject.id,
+                                    title: passwordObject.title,
+                                    account: passwordObject.account,
+                                    password: passwordObject.password,
+                                    website: passwordObject.website
+                                }}
+                            />
+                        )
+                    })}
             </div>
         </div>
     );
