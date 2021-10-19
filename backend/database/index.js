@@ -1,6 +1,6 @@
 const Database = require('better-sqlite3');
 const bcrypt = require('bcrypt');
-const db = new Database('./database/database.db');
+const db = new Database('./database/database_data/database.db');
 const saltRounds = 10;
 
 function createTables() {

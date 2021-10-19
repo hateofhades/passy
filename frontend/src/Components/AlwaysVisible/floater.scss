@@ -1,0 +1,41 @@
+.floater-body {
+    position: fixed;
+    top: 50%;
+
+    min-width: 80px;
+    max-width: 100px;
+    min-height: 350px;
+    width: 5%;
+    height: 60%;
+
+    transform: translate(0%, -50%);
+
+    margin-left: 1em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    box-shadow: 0px 0px 5px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+
+    img {
+        width: 80%;
+        margin: auto;
+        transition: all 250ms ease-in-out;
+        filter: invert(17%) sepia(22%) saturate(1830%) hue-rotate(178deg) brightness(92%) contrast(85%);
+
+        &:hover {
+            cursor: pointer;
+            filter: invert(50%) sepia(96%) saturate(512%) hue-rotate(171deg) brightness(90%) contrast(89%);
+        }
+    }
+
+    .floater-selected {
+        filter: invert(50%) sepia(96%) saturate(512%) hue-rotate(171deg) brightness(90%) contrast(89%);
+
+        &:hover {
+            cursor: default;
+        }
+    }
+}

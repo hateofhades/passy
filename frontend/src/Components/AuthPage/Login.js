@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logoImg from './logo.svg';
+import logoImg from '../../logo.svg';
 import './style.scss'
 import { Link } from '@material-ui/core';
 import axios from 'axios';
@@ -30,6 +30,8 @@ function Login({ playAnimation, registeredUsername }) {
         setPlayAnimationState(false);
 
         if (username !== "" && password !== "") {
+            axios.defaults.withCredentials = true;
+
             let response = await axios.post("http://localhost:6942/v1/auth/login", {
                 username: username,
                 password: password
@@ -69,7 +71,7 @@ function Login({ playAnimation, registeredUsername }) {
                     </div>
                 </div>
             </div>
-            <div className="footer">
+            <div className="footer--auth">
                 <button onClick={handleLogin} type="button" className={`auth-btn animate__animated ${playAnimation ? "animate__fadeIn" : ""}`}>Login</button>
                 <Link className={`text animate__animated ${playAnimation ? "animate__fadeIn" : ""}`} color="inherit" href="#" variant="body2" onClick={e => e.preventDefault()}>Problems logging in?</Link>
             </div>

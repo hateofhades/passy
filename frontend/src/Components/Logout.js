@@ -9,6 +9,7 @@ function Logout() {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
+        axios.defaults.withCredentials = true;
         axios.get("http://localhost:6942/v1/auth/logout");
         dispatch(logout());
     };
